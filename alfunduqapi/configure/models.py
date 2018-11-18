@@ -2,7 +2,7 @@ from django.db import models
 
 
 class RoomType(models.Model):
-    type_id = models.CharField(max_length=10)
+    roomtype_id = models.AutoField(primary_key=True, default=None)
     rate = models.IntegerField()
     desc = models.TextField()
     type_name = models.CharField(max_length=100, default=None)

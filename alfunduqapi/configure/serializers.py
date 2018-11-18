@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from rooms import models
+from configure import models
 
 
 class RoomTypeSerializer(serializers.ModelSerializer):
@@ -16,8 +16,16 @@ class FloorSerializer(serializers.ModelSerializer):
 
 
 class RoomSerializer(serializers.ModelSerializer):
-    #floor = FloorSerializer(many=False, read_only=True)
-    #room_type = RoomTypeSerializer(many=False, read_only=True)
+    floor = FloorSerializer(many=False, read_only=True)
+    room_type = RoomTypeSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = models.Rooms
+        # fields = '__all__'
+        fields = ('number', 'floor', 'room_type')
+
+
+class RoomCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Rooms

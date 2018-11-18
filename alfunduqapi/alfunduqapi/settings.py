@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
     'api',
     'users',
-    'rooms'
+    'configure',
 ]
 
 # Authentication settings
