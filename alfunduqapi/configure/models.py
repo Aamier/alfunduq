@@ -9,8 +9,7 @@ class RoomType(models.Model):
 
 
 class Floor(models.Model):
-    floor_id = models.AutoField(primary_key=True, default=None)
-    floor_number = models.IntegerField(default=None)
+    floor_number = models.IntegerField(primary_key=True, unique=True, default=None)
     floor_name = models.CharField(max_length=20)
 
 
