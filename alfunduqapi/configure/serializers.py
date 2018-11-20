@@ -3,6 +3,13 @@ from rest_framework import serializers
 from configure import models
 
 
+class FacilitySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Facility
+        fields = '__all__'
+
+
 class RoomTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.RoomType
@@ -20,13 +27,13 @@ class RoomSerializer(serializers.ModelSerializer):
     room_type = RoomTypeSerializer(many=False, read_only=True)
 
     class Meta:
-        model = models.Rooms
-        # fields = '__all__'
-        fields = ('number', 'floor', 'room_type')
+        model = models.Room
+        fields = '__all__'
+        # fields = ('room_no', 'floor', 'room_type')
 
 
 class RoomCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.Rooms
+        model = models.Room
         fields = '__all__'

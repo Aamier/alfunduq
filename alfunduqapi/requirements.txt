@@ -6,3 +6,4 @@ django-rest-auth==0.9.3
 django-allauth
 django-cors-headers==2.4.0
 django-rest-swagger==2.2.0
+Pillow==5.0.0

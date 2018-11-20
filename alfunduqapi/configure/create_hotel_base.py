@@ -52,7 +52,7 @@ class RoomsList(APIView):
     """
 
     def get(self, request, format=None):
-        rooms_obj = models.Rooms.objects.all()
+        rooms_obj = models.Room.objects.all()
         rooms_serializer = serializers.RoomSerializer(rooms_obj, many=True)
         serializer = rooms_serializer.data
         return Response(serializer)
@@ -61,6 +61,27 @@ class RoomsList(APIView):
         json_payload = json.loads(str(request.body, encoding='utf-8'))
         print(json_payload)
         serializer = serializers.RoomCreateSerializer(data=json_payload)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class FacilityList(APIView):
+    """
+    List all rooms, or create a new room.
+    """
+
+    def get(self, request, format=None):
+        facility_obj = models.Facility.objects.all()
+        facility_serializer = serializers.FacilitySerializer(facility_obj, many=True)
+        serializer = facility_serializer.data
+        return Response(serializer)
+
+    def post(self, request, format=None):
+        json_payload = json.loads(str(request.body, encoding='utf-8'))
+        print(json_payload)
+        serializer = serializers.FacilitySerializer(data=json_payload)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

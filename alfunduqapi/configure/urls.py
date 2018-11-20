@@ -8,5 +8,6 @@ urlpatterns = [
     path('rooms', create_hotel_base.RoomsList.as_view()),
     path('floors', create_hotel_base.Floor.as_view()),
     path('roomtype', create_hotel_base.RoomType.as_view()),
+    path('facility', create_hotel_base.FacilityList.as_view()),
     url(r'^(?P<pk>[0-9]+)/floor/$', views.Floor.as_view()),
 ]
